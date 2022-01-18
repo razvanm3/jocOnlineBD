@@ -1,0 +1,34 @@
+
+
+{% extends "layout.html" %}
+
+{% block content1 %}
+<div class="col-md-4">
+  <div class="customers th">
+    <h1 class="logo2">conturi</h1>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Data Nastere</th>
+          <th>Data Cont</th>
+          <th>Hash</th>
+        </tr>
+        {% for cont in conturi %}
+        <tr>
+          <td>{{cont[0]}}</td>
+          <td>{{cont[1]}}</td>
+          <td>{{cont[2]}}</td>
+          <td>{{cont[3]}}</td>
+          <td>{{cont[4]}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+  </div>
+</div>
+
+<a href="/conturi?offset={{ nextOffset }}">Next Page </a>
+<a href="/conturi?offset={{ previousOffset }}">Previous Page</a>
+<a href="/conturi?offset=0">First Page</a>
+<a href="/conturi?offset={{ lastOffset }}">Last Page</a>
+{% endblock content1 %}

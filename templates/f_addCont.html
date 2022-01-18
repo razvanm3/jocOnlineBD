@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JocVideoBD</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"><a href="/home">JocOnline</a></h2>
+            </div>
+
+        </div>
+        <div class="content">
+                <div class="form2">
+                    <form method="POST" action="/submitcont">
+                        <h2>Add an Account</h2>
+                        <p class="link">Enter Email: </p><br>
+                        <input type="email" name="email" placeholder=" Enter Email Here">
+                        <p class="link">Admin Privileges: </p><br>
+                        <input type="radio" id="yes" name="priv" value="1">
+                        <label for="yes">Yes</label><br>
+                        <input type="radio" id="no" name="priv" value="0">
+                        <label for="no">No</label><br>
+                        <p class="link">Enter Birth-date: </p><br>
+                        <input type="date" name="birth-date" value="2022-01-31">
+                         <p class="link">Enter Account-date: </p><br>
+                        <input type="date" name="account-date" value="2022-01-31">
+                        <p class="link">Enter Password: </p><br>
+                        <input type="password" name="password" placeholder=" Enter Password Here">
+                        <button class="btn"><input2 type="submit" name="Login" placeholder="Submit"><a>Submit</a></input></button>  
+                    </form>
+                </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            
+            {% for message in messages %}
+            <div class="ch7">
+                <div class="flash-banner">
+                    <h1>{{ message }}</h1>
+                </div>
+            </div>
+            {% endfor %}
+            
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

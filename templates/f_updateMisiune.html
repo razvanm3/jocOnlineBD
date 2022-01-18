@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+    <title>JocVideoBD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+    <div id="content">
+        <div class="navbar">
+            <div class="icon">
+                <h class="logo"><a href="/homeAdmin">JocOnline</a></h>
+            </div>
+            {% if 'email' in session %}
+            <ul class="menu">
+                <li><a href="/conturiAdmin">CONTURI</a></li>
+                <li><a href="/itemeAdmin">ITEME</a></li>
+                <li><a href="/misiuniAdmin">MISIUNI</a></li>
+                <li><a href="/caractereAllAdmin">CARACTERE</a></li>
+            </ul>
+            {% endif %}     
+        </div>
+
+        <div id="section-space">
+            <br>
+        </div>
+
+        <div id="section-flash">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                
+                {% for message in messages %}
+                <div class="flash-banner">
+                    <h1>{{ message }}</h1>
+                </div>
+                {% endfor %}
+                
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="section">
+            <div id="section13">
+                <div class="form">
+                    <form method="POST" action="/modifyMission/{{ data['IDMisiune'] }}">
+                        <br><br>
+                        <h3>Modificarea Misiunii</h3>
+                        <p class="link">Introdu numele: </p>
+                        <input type="text" required="required" name="numeMisiune" value="{{data['numeMisiune']}}">
+                        <p class="link">Introdu nivelul recomandat: </p>
+                        <input type="text" required="required" name="nivelRecomandat" value="{{data['nivelRecomandat']}}">
+                        <p class="link">Introdu recompensa: </p>
+                        <input type="text" required="required" name="recompensa" value="{{data['recompensa']}}">
+                        <button class="btn"><input2 type="submit" name="Login" placeholder="Submit"><a>Modifica</a></input></button>
+                   </form>
+               </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

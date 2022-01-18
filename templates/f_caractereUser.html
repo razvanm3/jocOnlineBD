@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<head>
+  <title>JocVideoBD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+  <div id="content">
+    <div class="navbar">
+      <div class="icon">
+        <h class="logo"><a href="/home">JocOnline</a></h>
+      </div>
+      {% if 'email' in session %}
+      <ul class="menu">
+        <li><a href="/caractereUser">CARACTERE</a></li>
+          <li><a href="/iteme">ITEME</a></li>
+          <li><a href="/misiuni">MISIUNI</a></li>
+      </ul>
+      {% endif %}     
+    </div>
+
+    <div id="section-flash">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+              
+        {% for message in messages %}
+        <div class="flash-banner">
+          <h1>{{ message }}</h1>
+        </div>
+          {% endfor %}
+              
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="section-content">
+      <div id="section5">
+          <div class="form">
+            <form method="POST" action="/submitcaracter">
+              <h3>Create Caracter</h3><br>
+              <p class="link">Introdu Numele Caracterului: </p>
+              <input type="name" required="required" name="numeCaracter" placeholder=" Nume Caracter">
+              <p class="link">Selecteaza Tipul Caracter:</p>
+              <select class="sel" id="tipCaracter" name="tipCaracter">
+                <option value="Warrior">Warrior</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Sorceress">Sorceress</option>
+                <option value="Berserker">Berserker</option>
+                <option value="Ninja">Ninja</option>
+                <option value="Wizard">Wizard</option>
+                <option value="Witch">Witch</option>
+                <option value="Dark Knight">Dark Knight</option>
+                <option value="Striker">Striker</option>
+              </select><br>
+              
+              <button class="btn"><input2 type="submit" name="Login"><a>Submit</a></input></button>
+            </form>
+          </div>
+      </div>
+
+      <div id="section6">
+        <h1 class="logo2">Caractere - {{ session['email'] }}</h1>
+          <table>
+            <tbody>
+              <tr>
+                <th>Nume Caracter</th>
+                <th>Tip Caracter</th>
+                <th>Nivel</th>
+                <th>Bani</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+          {% for caracter in caractereUser %}
+              <tr>
+                <td>{{caracter[2]}}</td>
+                <td>{{caracter[3]}}</td>
+                <td>{{caracter[4]}}</td>
+                <td>{{caracter[5]}}</td>
+                <td><a href="{{url_for('misiuniCaracterUser',id=caracter[0])}}">Misiuni</a></td>
+                <td><a href="{{url_for('obiecteCaracterUser',id=caracter[0])}}">Iteme</a></td>
+                <td><a href="{{url_for('stergeCaracterUser',id=caracter[0])}}">Stergere</a></td>
+              </tr>
+          {% endfor %}
+            </tbody>
+          </table>
+      </div> 
+    </div>
+  </div> 
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<head>
+  <title>JocVideoBD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+  <div id="content">
+    <div class="navbar">
+      <div class="icon">
+        <h class="logo"><a href="/homeAdmin">JocOnline</a></h>
+      </div>
+      {% if 'email' in session %}
+      <ul class="menu">
+        <li><a href="/conturiAdmin">CONTURI</a></li>
+        <li><a href="/itemeAdmin">ITEME</a></li>
+        <li><a href="/misiuniAdmin">MISIUNI</a></li>
+        <li><a href="/caractereAllAdmin">CARACTERE</a></li>
+      </ul>
+      {% endif %}     
+    </div>
+
+    <div id="section-flash">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+              
+        {% for message in messages %}
+        <div class="flash-banner">
+          <h1>{{ message }}</h1>
+        </div>
+          {% endfor %}
+              
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="section-content">
+      <div id="section5">
+            <div class="form">
+                <form method="POST" action="/submititem">
+                    <h3>Adaugare Item</h3>
+                    <p class="link">Item name: </p><br>
+                    <input type="text" required="required" name="numeItem" placeholder="Numele itemului">
+                    <p class="link">Nivel necesar: </p><br>
+                    <input type="text" required="required" name="nivelNecesarItem" placeholder="Nivelul necesar">
+                    <p class="link">Pret: </p><br>
+                    <input type="text" required="required" name="pret" placeholder="Pretul">
+                    <button class="btn"><input2 type="submit" name="Item Submit" placeholder="Submit"><a>Adauga</a></input></button>
+                </form>
+            </div>
+      </div>
+
+      <div id="section5">
+        <div class="form">
+             <form method="GET" action="/itemeAdmin">
+                <h3>Filtrare Iteme</h3>
+                 <p class="link">ID Item:</p>
+                <input type="name" name="IDItem" placeholder=" Item">
+                <p class="link">Nume Item: </p>
+                <input type="name" name="numeItem" placeholder=" Nume">
+<!--                <p class="link">Nivel Minim:</p>-->
+<!--                <input type="name" name="nivelMin" placeholder=" Minim">-->
+<!--                <p class="link">Nivel Maxim:</p>-->
+<!--                <input type="name" name="nivelMax" placeholder=" Maxim">-->
+                <p class="link">Nivel (interval):</p>
+                <input type="name" name="nivel" placeholder="ex: 24-62, 52">
+<!--                <p class="link">Recompensa Minima:</p>-->
+<!--                <input type="name" name="recompMin" placeholder=" Minim">-->
+<!--                <p class="link">Recompensa Maxima:</p>-->
+<!--                <input type="name" name="recompMax" placeholder=" Maxim">-->
+                <p class="link">Valoare (interval):</p>
+                <input type="name" name="valoare" placeholder="ex: 12134-59875, 2525">
+                <button class="btn"><input2 type="submit" name="Login"><a>Filtreaza</a></input></button><br>
+            </form>
+        </div>
+    </div>
+
+      <div id="section12">
+        <h1 class="logo2">Iteme</h1>
+          <table>
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Nume</th>
+                    <th>Nivel</th>
+                    <th>Valoare</th> 
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for item in iteme %}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td><a href="{{url_for('deleteItem',id=item[0])}}">STERGE</a></td>
+                    <td><a href="{{url_for('modifyItem',id=item[0])}}">MODIFICA</a></td>
+              </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          <div class="pagination">
+            <a href="/itemeAdmin?{{ firstPage}}">&laquo;</a>
+            <a href="/itemeAdmin?{{ previousPage }}">Pagina Anterioara </a>
+            <a href="/itemeAdmin?{{ nextPage }}">Pagina Urmatoare </a>
+            <a href="/itemeAdmin?{{ lastPage }}">&raquo;</a>
+          </div>
+      </div> 
+    </div>
+  </div> 
+</body>
+</html>

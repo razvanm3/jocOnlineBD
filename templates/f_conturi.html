@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JocVideoBD</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='misiuni.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"><a href="/home">JocOnline</a></h2>
+            </div>
+        </div>
+        <div class="content">
+
+
+
+
+
+            <div class="col-md-4">
+                <div class="customers th">
+                    <div class="ch3">
+                        <h1 class="logo2">Conturi <a href="/addcont">Adauga Cont</a></h1>
+                        <table>
+                          <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Admin</th>
+                            <th>DataNastere</th>
+                            <th>DataCont</th>
+                            <th>Hasht</th>
+                              <th></th>
+                              <th></th>
+                          </tr>
+                          {% for cont in conturi %}
+                          <tr>
+                            <td>{{cont[0]}}</td>
+                            <td>{{cont[1]}}</td>
+                            <td>{{cont[2]}}</td>
+                            <td>{{cont[3]}}</td>
+                            <td>{{cont[4]}}</td>
+                            <td>{{cont[5]}}</td>
+                              <td>Update</td>
+                              <td><a href="{{url_for('stergeCont',id=cont[0])}}">Stergere</a></td>
+                          </tr>
+                          {% endfor %}
+                        </table>
+                        <div class="pagination">
+                            <a href="/conturi?offset=0">&laquo;</a>
+                            <a href="/conturi?offset={{ previousOffset }}">Previous Page</a>
+                            <a href="/conturi?offset={{ nextOffset }}">Next Page </a>
+                            <a href="/conturi?offset={{ lastOffset }}">&raquo;</a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</body>
+</html>

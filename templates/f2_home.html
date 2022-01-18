@@ -1,0 +1,380 @@
+{% if 'email' not in session %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>JocVideoBD</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="main">
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo"><a href="/home">JocOnline</a></h2>
+                </div>
+                <div>
+                    <div class="content">
+                        <div class="ch2">
+                            <h1>Baza de Date pentru un Joc Online</h1>
+                            <p class="par">Bun venit pe website-ul JocOnline.</p>
+                        </div>
+
+
+                        <div class="form">
+                            <form method="POST" action="/submitlogin">
+                                <h2>Login Here</h2>
+                                <input type="email" name="email" placeholder=" Enter Email Here">
+                                <input type="password" name="password" placeholder=" Enter Password Here">
+                                <button class="btn"><input2 type="submit" name="Login"><a>Submit</a></input></button>
+                                <!-- <input type="submit" name="Login" class="btn"></input> -->
+
+                                <p class="link">Forgot password?</p><br>
+                                <a href="/resetpassword">Reset it</a>
+                                <p class="link">Don't have an account?</p><br>
+                                <a href="/register">Sign up here</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="customers th">
+                      <div class="ch3">
+                          <h1 class="logo2">Top Caractere</h1>
+                          <table>
+                            <tr>
+                              <th>Nume</th>
+                              <th>Clasa</th>
+                              <th>Nivel</th>
+                            </tr>
+                            {% for caracter in topCaractere %}
+                            <tr>
+                              <td>{{caracter[0]}}</td>
+                              <td>{{caracter[1]}}</td>
+                              <td>{{caracter[2]}}</td>
+                            </tr>
+                            {% endfor %}
+                          </table>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+                {% for message in messages %}
+                <div class="ch6">
+                    <div class="flash-banner">
+                        <h1>{{ message }}</h1>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+
+
+        </div>
+        </div>
+
+    </body>
+    </html>
+{% endif %}
+
+
+
+
+
+{% if 'email' in session and session['xroot']==False%}
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>JocVideoBD</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="main">
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo"><a href="/home">JocOnline</a></h2>
+                </div>
+                <div>
+
+
+                    <ul class="menu">
+                        <li><a href="/caractereUser">CARACTERE</a></li>
+                        <li><a href="/iteme">ITEME</a></li>
+                        <li><a href="/misiuni">MISIUNI</a></li>
+                    </ul>
+
+
+                    <div class="content">
+                        <div class="ch2">
+                            <h1>Baza de Date pentru un Joc Online</h1>
+                            <p class="par">Bun venit pe website-ul JocOnline.</p>
+                        </div>
+
+
+                        <div class="form">
+                            <p class="cont">Logged in as: {{ session['email'] }}</p><br>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="customers th">
+                      <div class="ch3">
+                          <h1 class="logo2">Top Caractere</h1>
+                          <table>
+                            <tr>
+                              <th>Nume</th>
+                              <th>Clasa</th>
+                              <th>Nivel</th>
+                            </tr>
+                            {% for caracter in topCaractere %}
+                            <tr>
+                              <td>{{caracter[0]}}</td>
+                              <td>{{caracter[1]}}</td>
+                              <td>{{caracter[2]}}</td>
+                            </tr>
+                            {% endfor %}
+                          </table>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+                {% for message in messages %}
+                <div class="ch6">
+                    <div class="flash-banner">
+                        <h1>{{ message }}</h1>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+
+        </div>
+        </div>
+
+    </body>
+    </html>
+{% endif %}
+
+
+
+
+
+{% if 'email' in session and session['xroot']==True%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JocVideoBD</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styleAdmin.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"><a href="/home">JocOnline</a></h2>
+            </div>
+            <div>
+
+
+<!--                <ul class="menu">-->
+<!--                    <li><a href="/conturi">CONTURI</a></li>-->
+<!--                    <li><a href="/caractereUser">CARACTERE</a></li>-->
+<!--                    <li><a href="/iteme">ITEME</a></li>-->
+<!--                    <li><a href="/misiuni">MISIUNI</a></li>-->
+<!--                    <li><a href="/misiuni">CARACTERE-ITEME</a></li>-->
+<!--                    <li><a href="/misiuni">CARACTERE-MISIUNI</a></li>-->
+<!--                </ul>-->
+
+
+                <div class="content">
+                    <div class="ch2">
+                        <h1>Baza de Date pentru un Joc Online</h1>
+                        <p class="par">Bun venit pe website-ul JocOnline.</p>
+                        <h1><a href="/conturi">CONTURI</a> </h1>
+                        <h1>&nbsp;</h1>
+                        <h1>CONTURI</h1>
+                        <h1>&nbsp;</h1>
+                        <h1>CONTURI</h1>
+                        <h1>&nbsp;</h1>
+                        <h1>CONTURI</h1>
+                        <h1>&nbsp;</h1>
+                        <h1>CARACTERE-ITEME</h1>
+                        <h1>&nbsp;</h1>
+                        <h1>CARACTERE-MISIUNBI</h1>
+                    </div>
+
+
+                <div class="form">
+                    <p class="cont">Logged in as: {{ session['email'] }} (ADMIN)</p><br>
+                    <a href="/logout">Logout</a>
+                </div>
+
+                </div>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            {% for message in messages %}
+            <div class="ch6">
+                <div class="flash-banner">
+                    <h1>{{ message }}</h1>
+                </div>
+            </div>
+            {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+
+
+    </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,376 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.main{
+    width: 100%;
+    background: url('Back2.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+}
+
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo{
+    color: white;
+    font-size: 80px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.logo a{
+    text-decoration: none;
+    color: white;
+}
+
+.logo a:hover{
+    color: orange;
+}
+
+.menu{
+    width: 400px;
+    float: right;
+    height: 70px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 70px;
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+ul li a:hover{
+    color: orange;
+}
+
+.h1{
+    font-size: 20px;
+    text-align: left;
+}
+.ch3{
+    width: 360px;
+    height: 650px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    top: -20px;
+    margin-left: -50px;
+    margin-top: -600px;
+    border-radius: 10px;
+    padding: 25px;
+}
+table {
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-family: Arial;
+    border-collapse: collapse;
+    width: 80%;
+    font-size: 15px;
+    align-content: center;
+  }
+
+td{
+    border: 3px solid black;
+    padding: 15px;
+    text-align: center;
+
+}
+
+th{
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+tr:nth-child(1n){
+    background-color: white;
+}
+
+tr:hover {
+    background-color: turquoise;
+
+}
+
+th {
+    margin-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+  }
+
+.col-md-4{
+    -ms-flex:0 0 33.333333%;
+    flex:0 0 33.333333%;
+    max-width:33.333333%}
+
+.logo2{
+    color: white;
+    font-size: 30px;
+    font-family: Arial;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.ch2{
+    width: 410px;
+    height: 550px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-left: 400px;
+    margin-top: 100px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.ch6{
+    width: 410px;
+    height: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-left: 750px;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.ch7{
+    width: 410px;
+    height: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-left: 750px;
+    margin-top: -25px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.flash-banner{
+    color: white;
+    font-family: Arial;
+    font-size: 10px;
+    text-align: center;
+}
+.content{
+    padding-top: 60px;
+    text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    line-height: 20px;
+}
+
+.content h1{
+    font-family: Arial;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+.btn{
+    width: 240px;
+    height: 40px;
+    background: orange;
+    border: 2px solid orange;
+    margin-top: 13px;
+    color: white;
+    font-size: 18px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover{
+    background: white;
+    color: orange;
+    border: white;
+}
+
+.btn a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.btn:focus{
+    outline: none;
+}
+
+.form{
+    width: 280px;
+    height: 380px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    position: absolute;
+    top: -20px;
+    margin-left: 900px;
+    margin-top: 200px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.form .cont{
+    padding-top: 50px;
+    color: white;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.form input{
+    width: 240px;
+    height: 35px;
+    background: transparent;
+    border-style: solid;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: Arial;
+    text-align: left;
+}
+
+.form input:focus{
+   outline: none;
+}
+
+::placeholder{
+    color: white;
+    font-family: Arial;
+}
+
+.form .link{
+    font-family: Arial;
+    font-size: 15px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.form .link a{
+    text-decoration: none;
+    color: orange;
+}
+
+.invalid-feedback{display:none;width:100%;margin-top:.25rem;font-size:80%;color:#dc3545}
+
+.form-control{display:block;width:100%;height:calc(1.5em + .75rem + 2px);padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out}
+
+.form-control-lg{height:calc(1.5em + 1rem + 2px);padding:.5rem 1rem;font-size:1.25rem;line-height:1.5;border-radius:.3rem}
+
+/* PENTRU CONTURI.HTML*/
+.ch5{
+    width: 900px;
+    height: 630px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    position: center;
+    margin-left: 100px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+/* PENTRU REGISTER.HTML*/
+.form2{
+    width: 410px;
+    height: 550px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    position: absolute;
+    top: -20px;
+    margin-left: 750px;
+    margin-top: 200px;
+    border-radius: 10px;
+    padding: 25px;
+}
+.form2 input{
+    width: 240px;
+    height: 35px;
+    background: transparent;
+    border-style: solid;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: Arial;
+    text-align: left;
+}
+
+.form2 h2{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.form2 input:focus{
+   outline: none;
+}
+
+::placeholder{
+    color: white;
+    font-family: Arial;
+}
+
+.form2 .link{
+    font-family: Arial;
+    font-size: 15px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.form2 .link a{
+    text-decoration: none;
+    color: orange;
+}
+
+
+/* PAGINATION */
+.pagination a {
+    padding-left: 100px;
+  color: white;
+  float: left;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}

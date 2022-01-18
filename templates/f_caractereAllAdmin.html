@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+  <title>JocVideoBD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+  <div id="content">
+    <div class="navbar">
+      <div class="icon">
+        <h class="logo"><a href="/homeAdmin">JocOnline</a></h>
+      </div>
+      {% if 'email' in session %}
+      <ul class="menu">
+        <li><a href="/conturiAdmin">CONTURI</a></li>
+        <li><a href="/itemeAdmin">ITEME</a></li>
+        <li><a href="/misiuniAdmin">MISIUNI</a></li>
+        <li><a href="/caractereAllAdmin">CARACTERE</a></li>
+      </ul>
+      {% endif %}     
+    </div>
+
+    <div id="section-flash">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+              
+        {% for message in messages %}
+        <div class="flash-banner">
+          <h1>{{ message }}</h1>
+        </div>
+          {% endfor %}
+              
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="section-content">
+      <div id="section5">
+        <div class="form">
+            <form method="GET" action="/caractereAllAdmin">
+                <h3>Filtrare Caractere</h3>
+<!--                <p class="link">BAGO PE: </p><br>-->
+<!--                <input type="text" name="IDMisiune" placeholder="MATAAAAA">-->
+                <p class="link">ID Caracter:</p>
+                <input type="name" name="IDCaracter" placeholder=" Item">
+                <p class="link">Nume Caracter: </p>
+                <input type="name" name="numeCaracter" placeholder=" Nume">
+                <p class="link">Tip Caracter: </p>
+                <input type="name" name="tipCaracter" placeholder="ex: Wizard">
+<!--                <p class="link">Nivel Minim:</p>-->
+<!--                <input type="name" name="nivelMin" placeholder=" Minim">-->
+<!--                <p class="link">Nivel Maxim:</p>-->
+<!--                <input type="name" name="nivelMax" placeholder=" Maxim">-->
+                 <p class="link">Nivel (interval):</p>
+                <input type="name" name="nivel" placeholder="ex: 24-62, 52">
+<!--                <p class="link">Bani (min):</p>-->
+<!--                <input type="name" name="baniMin" placeholder=" Minim">-->
+<!--                <p class="link">Bani (max):</p>-->
+<!--                <input type="name" name="baniMax" placeholder=" Maxim">-->
+                <p class="link">Bani (interval):</p>
+                <input type="name" name="bani" placeholder="ex: 12134-59875, 2525">
+                <button class="btn"><input2 type="submit" name="Login"><a>Filtrare</a></input></button><br>
+            </form>
+        </div>
+    </div>
+
+
+        <div id="section11">
+            <h1 class="logo2">Caractere</h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ID Caracter</th>
+                        <th>Nume Caracter</th>
+                        <th>Tip Caracter</th>
+                        <th>Nivel</th>
+                        <th>Bani</th>
+                        <th>ID Cont</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    {% for caracter in caractere %}
+                    <tr>
+                      <td>{{caracter[0]}}</td>
+                      <td>{{caracter[2]}}</td>
+                      <td>{{caracter[3]}}</td>
+                      <td>{{caracter[4]}}</td>
+                      <td>{{caracter[5]}}</td>
+                      <td>{{caracter[1]}}</td>
+                      <td><a href="{{url_for('misiuniCaracterAdmin',id=caracter[0])}}">Misiuni</a></td>
+                      <td><a href="{{url_for('obiecteCaracterAdmin',id=caracter[0])}}">Iteme</a></td>
+                      <td><a href="{{url_for('stergeCaracterAdmin',id=caracter[0])}}">Stergere</a></td>
+                      <td><a href="{{url_for('modifyCaracterAdminAll',id=caracter[0])}}">Modifica</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                <a href="/caractereAllAdmin?{{ firstPage}}">&laquo;</a>
+                <a href="/caractereAllAdmin?{{ previousPage }}">Pagina Anterioara </a>
+                <a href="/caractereAllAdmin?{{ nextPage }}">Pagina Urmatoare </a>
+                <a href="/caractereAllAdmin?{{ lastPage }}">&raquo;</a>
+            </div>
+      </div> 
+    </div>
+  </div> 
+</body>
+</html>

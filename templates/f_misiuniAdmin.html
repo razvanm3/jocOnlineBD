@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<head>
+  <title>JocVideoBD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+  <div id="content">
+    <div class="navbar">
+      <div class="icon">
+        <h class="logo"><a href="/homeAdmin">JocOnline</a></h>
+      </div>
+      {% if 'email' in session %}
+      <ul class="menu">
+        <li><a href="/conturiAdmin">CONTURI</a></li>
+        <li><a href="/itemeAdmin">ITEME</a></li>
+        <li><a href="/misiuniAdmin">MISIUNI</a></li>
+        <li><a href="/caractereAllAdmin">CARACTERE</a></li>
+      </ul>
+      {% endif %}     
+    </div>
+
+    <div id="section-flash">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+              
+        {% for message in messages %}
+        <div class="flash-banner">
+          <h1>{{ message }}</h1>
+        </div>
+          {% endfor %}
+              
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="section-content">
+      <div id="section5">
+            <div class="form">
+                <form method="POST" action="/submitmission">
+                    <h3>Adaugare Misiune</h3>
+                    <p class="link">Nume Misiune: </p><br>
+                    <input type="text" required="required" name="numeMisiune" placeholder="ex: Gemstone Crafting">
+                    <p class="link">Nivel: </p><br>
+                    <input type="text" required="required" name="nivelRecomandat" placeholder="ex: 43">
+                    <p class="link">Recompensa: </p><br>
+                    <input type="text" required="required" name="recompensa" placeholder="ex: 243205">
+                    <button class="btn"><input2 type="submit" name="Item Submit" placeholder="Submit"><a>Adauga</a></input></button>
+                </form>
+            </div>
+      </div>
+
+      <div id="section5">
+        <div class="form">
+            <form method="GET" action="/misiuniAdmin">
+                <h3>Filtrare Misiuni</h3>
+                 <p class="link">ID Misiune:</p>
+                <input type="name" name="IDMisiune" placeholder=" Misiune">
+                <p class="link">Nume Misiune: </p>
+                <input type="name" name="numeMisiune" placeholder=" Nume">
+<!--                <p class="link">Nivel Minim:</p>-->
+<!--                <input type="name" name="nivelMin" placeholder=" Minim">-->
+<!--                <p class="link">Nivel Maxim:</p>-->
+<!--                <input type="name" name="nivelMax" placeholder=" Maxim">-->
+                <p class="link">Nivel (interval):</p>
+                <input type="name" name="nivel" placeholder="ex: 24-62, 52">
+<!--                <p class="link">Recompensa Minima:</p>-->
+<!--                <input type="name" name="recompMin" placeholder=" Minim">-->
+<!--                <p class="link">Recompensa Maxima:</p>-->
+<!--                <input type="name" name="recompMax" placeholder=" Maxim">-->
+                <p class="link">Bani (interval):</p>
+                <input type="name" name="bani" placeholder="ex: 12134-59875, 2525">
+                <button class="btn"><input2 type="submit" name="Login"><a>Filtreaza</a></input></button><br>
+            </form>
+        </div>
+    </div>
+
+      <!-- DE MODIFICAT INALTIMEA LA SECTION11 -->
+      <div id="section12">
+        <h1 class="logo2">Misiuni</h1>
+          <table>
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Nume</th>
+                    <th>Nivel</th>
+                    <th>Bani</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for misiune in misiuni %}
+                <tr>
+                    <td>{{misiune[0]}}</td>
+                    <td>{{misiune[1]}}</td>
+                    <td>{{misiune[2]}}</td>
+                    <td>{{misiune[3]}}</td>
+                    <td><a href="{{url_for('deleteMission',id=misiune[0])}}">STERGE</a></td>
+                    <td><a href="{{url_for('modifyMission',id=misiune[0])}}">MODIFICA</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          <div class="pagination">
+            <a href="/misiuniAdmin?{{ firstPage}}">&laquo;</a>
+            <a href="/misiuniAdmin?{{ previousPage }}">Pagina Anterioara </a>
+            <a href="/misiuniAdmin?{{ nextPage }}">Pagina Urmatoare </a>
+            <a href="/misiuniAdmin?{{ lastPage }}">&raquo;</a>
+          </div>
+      </div> 
+    </div>
+  </div> 
+</body>
+</html>

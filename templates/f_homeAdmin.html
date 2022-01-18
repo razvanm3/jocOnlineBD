@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+    <title>JocVideoBD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+    <div id="content">
+        <div class="navbar">
+            <div class="icon">
+                <h class="logo"><a href="/homeAdmin">JocOnline</a></h>
+            </div>
+            {% if 'email' in session %}
+            <!-- <ul class="menu">
+                <li><a href="/conturiAdmin">CONTURI</a></li>
+                <li><a href="/itemeAdmin">ITEME</a></li>
+                <li><a href="/misiuniAdmin">MISIUNI</a></li>
+                <li><a href="/caractereAllAdmin">CARACTERE</a></li>
+            </ul> -->
+            {% endif %}     
+        </div>
+
+        <div id="section-flash">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    
+                    {% for message in messages %}
+                    <div class="flash-banner">
+                        <h1>{{ message }}</h1>
+                    </div>
+                    {% endfor %}
+                    
+                {% endif %}
+                {% endwith %}
+        </div>
+
+        <div class="section-content">
+            <div id="section9">
+                <!-- MODIFICARE: PUNE BUTOANE, SCHIMBA DIMENSIUNI CHENARE -->
+                <div class="form4"> 
+                    <h3 class="logo2">Comenzi Admin:</h3>
+                    <p class="link">Vizualizarea Conturilor:</p>
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/conturiAdmin">CONTURI</a></input></button><br><br>
+                    <p class="link">Vizualizarea Itemelor:</p>
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/itemeAdmin">ITEME</a></input></button><br><br>
+                    <p class="link">Vizualizarea Misiunilor:</p>
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/misiuniAdmin">MISIUNI</a></input></button><br><br>
+                    <p class="link">Vizualizarea Caracterelor:</p>
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/caractereAllAdmin">CARACTERE</a></input></button><br><br>
+                </div>
+            </div>
+    
+            <div id="section10">
+                {% if 'email' not in session %}
+                <div class="form">
+                    <form method="POST" action="/submitlogin">
+                        <h2>Login Here</h2>
+                        <input type="email" name="email" placeholder=" Enter Email Here">
+                        <input type="password" name="password" placeholder=" Enter Password Here">
+                        <button class="btn"><input2 type="submit" name="Login"><a>Submit</a></input></button>
+            
+                        <p class="link">Forgot password?</p><br>
+                        <a href="/resetpassword">Reset it</a>
+                        <p class="link">Don't have an account?</p><br>
+                        <a href="/register">Sign up here</a>
+                    </form>
+                </div>
+                {% else %}
+                <div class="form">
+                    <p class="cont">Logat ca: {{ session['email'] }}</p><br>
+                    <h2 class="logo2">Administrare Cont Admin:</h2>
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/changepassword">Schimba parola</a></input></button><br>
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/changemail">Schimba Email</a></input></button><br><br><br><br> 
+                    <button class="btn"><input2 type="submit" name="Login"><a href="/logout">LOGOUT</a></input></button><br><br>  
+                </div>   
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

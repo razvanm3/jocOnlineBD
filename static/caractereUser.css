@@ -1,0 +1,347 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.main{
+    width: 100%;
+    background: url('Back2.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+}
+
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo{
+    color: white;
+    font-size: 80px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.logo a{
+    text-decoration: none;
+    color: white;
+}
+
+.logo a:hover{
+    color: orange;
+}
+
+.menu{
+    width: 400px;
+    float: right;
+    height: 70px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 70px;
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+ul li a:hover{
+    color: orange;
+}
+
+.h1{
+    font-size: 20px;
+    text-align: left;
+}
+
+.ch3{
+    width: 600px;
+    height: 650px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    top: -20px;
+    margin-left: 800px;
+    margin-top: 100px;
+    border-radius: 10px;
+    padding: 25px;
+}
+table {
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-top: 10px;
+    margin-left: 50px;
+    font-family: Arial;
+    border-collapse: collapse;
+    width: 500px;
+    font-size: 15px;
+    align-content: center;
+  }
+
+td{
+    border: 3px solid black;
+    padding: 15px;
+    text-align: center;
+    width: 500px;
+
+}
+
+th{
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+    width: 500px;
+}
+tr{
+    width: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+tr:nth-child(1n){
+    background-color: white;
+}
+
+tr:hover {
+    background-color: turquoise;
+
+}
+
+th {
+    margin-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: orange;
+}
+.col-md-4{
+    -ms-flex:0 0 33.333333%;
+    flex:0 0 33.333333%;
+    max-width:33.333333%;
+}
+
+.customers th{
+    width: 500px;
+}
+
+.logo2{
+    color: white;
+    font-size: 30px;
+    font-family: Arial;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* PAGINATION */
+.pagination a {
+    margin-top: 10px;
+  padding-left: 100px;
+  color: white;
+  font-family: Arial;
+  float: left;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  color: white;
+}
+
+.btn{
+    width: 240px;
+    height: 40px;
+    background: orange;
+    border: 2px solid orange;
+    margin-top: 13px;
+    color: white;
+    font-size: 18px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover{
+    background: white;
+    color: orange;
+    border: white;
+}
+
+.btn a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.btn:focus{
+    outline: none;
+}
+
+
+.form{
+    width: 280px;
+    height: 380px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    position: absolute;
+    top: -20px;
+    margin-left: 400px;
+    margin-top: 250px;
+    border-radius: 10px;
+    padding-top: 60px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.form input{
+    width: 240px;
+    height: 35px;
+    background: transparent;
+    border-style: solid;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: Arial;
+    text-align: left;
+    padding-left: 5px;
+}
+
+
+.form input:focus{
+   outline: none;
+}
+
+::placeholder{
+    color: white;
+    font-family: Arial;
+}
+
+.form .link{
+    font-family: Arial;
+    font-size: 20px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.form .link a{
+    text-decoration: none;
+    color: orange;
+}
+
+.btn{
+    width: 240px;
+    height: 40px;
+    background: orange;
+    border: 2px solid orange;
+    margin-top: 13px;
+    color: white;
+    font-size: 18px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover{
+    background: white;
+    color: orange;
+    border: white;
+}
+
+.btn a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.btn:focus{
+    outline: none;
+}
+
+
+/* .content{
+    padding-top: 60px;
+    text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    line-height: 20px;
+}
+
+.content h1{
+    font-family: Arial;
+    font-size: 25px;
+    padding-left: 10px;
+    letter-spacing: 1.5px;
+
+} */
+
+.ch2{
+    width: 410px;
+    height: 550px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-left: 400px;
+    margin-top: 100px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.sel{
+    width: 150px;
+    height: 30px;
+    color: black;
+    font-family: Arial;
+    font-size: 15px;
+}
+.ch6{
+    width: 410px;
+    height: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%) ;
+    margin-left: 750px;
+    margin-top: -900px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.flash-banner{
+    color: white;
+    font-family: Arial;
+    font-size: 10px;
+    text-align: center;
+}

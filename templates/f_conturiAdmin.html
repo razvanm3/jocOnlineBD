@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<head>
+  <title>JocVideoBD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+  <div id="content">
+    <div class="navbar">
+      <div class="icon">
+        <h class="logo"><a href="/homeAdmin">JocOnline</a></h>
+      </div>
+      {% if 'email' in session %}
+      <ul class="menu">
+        <li><a href="/conturiAdmin">CONTURI</a></li>
+        <li><a href="/itemeAdmin">ITEME</a></li>
+        <li><a href="/misiuniAdmin">MISIUNI</a></li>
+        <li><a href="/caractereAllAdmin">CARACTERE</a></li>
+      </ul>
+      {% endif %}     
+    </div>
+
+    <div id="section-flash">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+              
+        {% for message in messages %}
+        <div class="flash-banner">
+          <h1>{{ message }}</h1>
+        </div>
+          {% endfor %}
+              
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="section-content">
+      <div id="section5">
+            <div class="form">
+                <form method="POST" action="/submitcont">
+                    <h3>Adaugare Cont</h3>
+                    <p class="link">Email: </p>
+                    <input type="email" required="required" name="email" placeholder=" Email"><br>
+                    <p class="link">Data Nasterii: </p>
+                    <input type="date" required="required" name="birth-date" value="2022-01-31"><br>
+                    <p class="link">Data Cont: </p>
+                    <input type="date" required="required" name="account-date" value="2022-01-31"><br>
+                    <p class="link">Parola: </p>
+                    <input type="password" required="required" name="password" placeholder=" Parola"><br>
+    <!--                <p class="link">Confirma Parola: </p>-->
+    <!--                <input type="password" name="password-confirm" placeholder=" Parola"><br>-->
+                    <button class="btn"><input2 type="submit" name="Login1" placeholder="Submit"><a>Adauga</a></input></button>
+                </form>
+          </div>
+      </div>
+
+      <div id="section5">
+        <div class="form">
+             <form method="GET" action="/conturiAdmin">
+                <h3>Filtrare Conturi</h3>
+                <p class="link">ID Cont:</p>
+                <input type="name" name="IDCont" placeholder=" Cont">
+                <p class="link">Email: </p>
+                <input type="name" name="email" placeholder=" Nume">
+                <p class="link">Access: </p>
+                <input type="name" name="adminPriv" placeholder="ex: user, admin">
+<!--                <p class="link">Nivel Minim:</p>-->
+<!--                <input type="name" name="nivelMin" placeholder=" Minim">-->
+<!--                <p class="link">Nivel Maxim:</p>-->
+<!--                <input type="name" name="nivelMax" placeholder=" Maxim">-->
+<!--                 <p class="link">Nivel (interval):</p>-->
+<!--                <input type="name" name="nivel" placeholder="ex: 24-62, 52">-->
+<!--                <p class="link">Bani (min):</p>-->
+<!--                <input type="name" name="baniMin" placeholder=" Minim">-->
+<!--                <p class="link">Bani (max):</p>-->
+<!--                <input type="name" name="baniMax" placeholder=" Maxim">-->
+<!--                <p class="link">Bani (interval):</p>-->
+<!--                <input type="name" name="bani" placeholder="ex: 12134-59875, 2525">-->
+                <button class="btn"><input2 type="submit name="Login"><a>Filtrare</a></input></button><br>
+            </form>
+        </div>
+    </div>
+
+      <div id="section11">
+        <h1 class="logo2">Conturi</h1>
+          <table>
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Nivel Acces</th>
+                    <th>Data Nastere</th>
+                    <th>Data Creeare Cont</th>
+                    <!-- <th></th> -->
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for cont in conturi %}
+                <tr>
+                    <td>{{cont[0]}}</td>
+                    <td><a href="{{url_for('caractereAdmin',idcont=cont[0])}}">{{cont[1]}}</a></td>   <! --- hyperlink mail --->
+<!--                    <td>-->
+
+<!--                        {{cont[2]}}-->
+<!--                    </td>-->
+                    {% if cont[2] == 0%}
+                        <td>user</td>
+                    {% else %}
+                        <td>admin</td>
+                    {% endif %}
+                    <td>{{cont[3]}}</td>
+                    <td>{{cont[4]}}</td>
+                    <!-- <td>{{cont[5]}}</td> -->
+                    <td><a href="{{url_for('deleteAccountAdmin',id=cont[0])}}">STERGE</a></td>
+                    <td><a href="{{url_for('modifyAccountAdmin',id=cont[0])}}">MODIFICA</a></td>
+              </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+          <div class="pagination">
+            <a href="/conturiAdmin?{{ firstPage}}">&laquo;</a>
+            <a href="/conturiAdmin?{{ previousPage }}">Pagina Anterioara </a>
+            <a href="/conturiAdmin?{{ nextPage }}">Pagina Urmatoare </a>
+            <a href="/conturiAdmin?{{ lastPage }}">&raquo;</a>
+        </div>
+      </div> 
+    </div>
+  </div> 
+</body>
+</html>

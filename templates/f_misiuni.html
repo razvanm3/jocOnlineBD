@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+    <title>JocVideoBD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+  </head>
+  <body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+    <div id="content">
+      <div class="navbar">
+        <div class="icon">
+          <h class="logo"><a href="/home">JocOnline</a></h>
+        </div>
+        {% if 'email' in session %}
+        <ul class="menu">
+          <li><a href="/caractereUser">CARACTERE</a></li>
+            <li><a href="/iteme">ITEME</a></li>
+            <li><a href="/misiuni">MISIUNI</a></li>
+        </ul>
+        {% endif %}     
+      </div>
+  
+      <div id="section-flash">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+                
+          {% for message in messages %}
+          <div class="flash-banner">
+            <h1>{{ message }}</h1>
+          </div>
+            {% endfor %}
+                
+        {% endif %}
+        {% endwith %}
+      </div>
+  
+      <div class="section-content">
+        <div id="section5">
+            <div class="form3">
+              <form method="GET" action="/misiuni">
+                <h3>Filtrare Misiuni</h3>
+                <p class="link">ID Misiune:</p>
+                <input type="name" name="IDMisiune" placeholder=" Misiune">
+                <p class="link">Nume Misiune: </p>
+                <input type="name" name="numeMisiune" placeholder=" Nume">
+                <p class="link">Nivel Minim:</p>
+                <input type="name" name="nivelMin" placeholder=" Minim">
+                <p class="link">Nivel Maxim:</p>
+                <input type="name" name="nivelMax" placeholder=" Maxim">
+                <p class="link">Recompensa Minima:</p>   
+                <input type="name" name="recompMin" placeholder=" Minim">
+                <p class="link">Recompensa Maxima:</p> 
+                <input type="name" name="recompMax" placeholder=" Maxim">
+                <button class="btn"><input2 type="submit" name="FiltrareIteme"><a>Submit</a></input></button>
+              </form>
+            </div>
+        </div>
+  
+        <div id="section6">
+          <h1 class="logo2">Misiuni</h1>
+            <table>
+              <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Nume</th>
+                    <th>Nivel</th>
+                    <th>Bani</th>
+                </tr>
+                {% for misiune in misiuni %}
+                <tr>
+                    <td>{{misiune[0]}}</td>
+                    <td>{{misiune[1]}}</td>
+                    <td>{{misiune[2]}}</td>
+                    <td>{{misiune[3]}}</td>
+                </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+            <div class="pagination">
+                <a href="/misiuni?{{ firstPage}}">&laquo;</a>
+                <a href="/misiuni?{{ previousPage }}">Pagina Anterioara </a>
+                <a href="/misiuni?{{ nextPage }}">Pagina Urmatoare </a>
+                <a href="/misiuni?{{ lastPage }}">&raquo;</a>
+            </div>
+        </div> 
+      </div>
+    </div> 
+  </body>
+</html>

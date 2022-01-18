@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JocVideoBD</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"><a href="/homeAdmin">JocOnline</a></h2>
+            </div>
+<!--            <div>-->
+<!--                <ul class="menu">-->
+<!--                    <li><a href="/conturi">CONTURI</a></li>-->
+<!--                    <li><a href="caractere.html">CARACTERE</a></li>-->
+<!--                    <li><a href="iteme.html">ITEME</a></li>-->
+<!--                    <li><a href="misiuni.html">MISIUNI</a></li>-->
+<!--                    <li><a href="test.html">TEST</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+        </div>
+        <div class="content">
+                <div class="form2">
+                     <form method="POST" action="/submitcaracterAdmin">
+                    <h2>Create Character</h2>
+                    <input type="name" name="numeCaracter" placeholder=" Enter Caracter Name Here">
+                    <p class="link">Select Class:</p><br>
+                    <select class="sel" id="tipCaracter" name="tipCaracter">
+                        <option value="Warrior">Warrior</option>
+                        <option value="Ranger">Ranger</option>
+                        <option value="Sorceress">Sorceress</option>
+                        <option value="Berserker">Berserker</option>
+                        <option value="Ninja">Ninja</option>
+                        <option value="Wizard">Wizard</option>
+                        <option value="Witch">Witch</option>
+                        <option value="Dark Knight">Dark Knight</option>
+                        <option value="Striker">Striker</option>
+                      </select>
+                         <input type="text" name="nivel" placeholder="Introdu nivelul aici">
+                         <input type="text" name="bani"  placeholder="Introdu valoarea banilor">
+                    <input type="submit" name="Login" class="btn"></input>
+                </form>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

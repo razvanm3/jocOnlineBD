@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JocVideoBD</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"><a href="/home">JocOnline</a></h2>
+            </div>
+<!--            <div>-->
+<!--                <ul class="menu">-->
+<!--                    <li><a href="/conturi">CONTURI</a></li>-->
+<!--                    <li><a href="caractere.html">CARACTERE</a></li>-->
+<!--                    <li><a href="iteme.html">ITEME</a></li>-->
+<!--                    <li><a href="misiuni.html">MISIUNI</a></li>-->
+<!--                    <li><a href="test.html">TEST</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+        </div>
+        <div class="content">
+                <div class="form2">
+                    <form method="POST" action="/submititem">
+                        <h2>Item Creation</h2>
+                        <p class="link">Item name: </p><br>
+                        <input type="text" name="numeItem" placeholder="Numele itemului">
+                        <p class="link">Nivel necesar: </p><br>
+                        <input type="text" name="nivelNecesarItem" placeholder="Nivelul necesar">
+                        <p class="link">Pret: </p><br>
+                        <input type="text" name="pret" placeholder="Pretul">
+                        <input type="submit" name="Mission Submit" class="btn" placeholder="Submit"></input>
+                    </form>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

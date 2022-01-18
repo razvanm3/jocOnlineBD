@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <title>JocVideoBD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css') }}">
+</head>
+<body data-new-gr-c-s-check-loaded="8.892.0" data-gr-ext-installed="" wfd-invisible="true">
+    <div id="content">
+        <div class="navbar">
+            <div class="icon">
+                <h class="logo"><a href="/home">JocOnline</a></h>
+            </div>
+            {% if 'email' in session %}
+            <ul class="menu">
+                <li><a href="/caractereUser">CARACTERE</a></li>
+                <li><a href="/iteme">ITEME</a></li>
+                <li><a href="/misiuni">MISIUNI</a></li>
+            </ul>
+            {% endif %}     
+        </div>
+
+        <div id="section-flash">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                
+                {% for message in messages %}
+                <div class="flash-banner">
+                    <h1>{{ message }}</h1>
+                </div>
+                {% endfor %}
+                
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="section">
+            <div id="section4">
+                <div class="form">
+                    <form method="POST" action="/submitregister">
+                        <h2>Create Account</h2>
+                       <p class="link">Enter Email: </p><br>
+                       <input type="email" required="required" name="email" placeholder=" Enter Email Here">
+                       <p class="link">Enter Birth-date: </p><br>
+                       <input type="date" name="birth-date" value="2022-01-31">
+                       <p class="link">Enter Password: </p><br>
+                       <input type="password" required="required" name="password" placeholder=" Enter Password Here">
+                       <p class="link">Enter Confirm Password: </p><br>
+                       <input type="password" required="required" name="password-confirm" placeholder=" Confirm Password">
+                       <button class="btn"><input2 type="submit" name="Login" placeholder="Submit"><a>Submit</a></input></button>  
+                   </form>
+               </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
