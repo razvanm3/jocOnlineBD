@@ -977,7 +977,7 @@ def addItemOnChar():
 
         iteme = query_db(database="jocOnlineDB.db", table_name="tblIteme", limit=limit, offset=offset, order_by='rowid', order='ASC' )
 
-        return render_template("f_itemeAdminAddOn.html", iteme = iteme,
+        return render_template("f_ItemeAdminAddOn.html", iteme = iteme,
         nextOffset = nextOffset, previousOffset = previousOffset, lastOffset = lastOffset)
     else:
         return redirect('/homeAdmin')
