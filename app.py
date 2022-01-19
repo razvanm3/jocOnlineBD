@@ -142,17 +142,20 @@ def submit_register():
             conn.commit()
             conn.close()
             flash("Cont inregistrat cu succes!")
-            body = f"Cont creat cu succes! Parola: {password}"
-            email = MIMEMultipart()
-            email['From'] = 'Faza3BD <contpython12354@gmail.com'
-            email['Subject'] = 'Creare cont'
-            email.attach(MIMEText(body))
-            email['To'] = emailadr
-            server = smtplib.SMTP(host='smtp.gmail.com', port=587)
-            server.starttls()
-            server.login('contpython12354@gmail.com', '#!Contpython123')
-            server.sendmail(email['From'], email['To'], email.as_string())
-            server.quit()
+            try:
+                body = f"Cont creat cu succes! Parola: {password}"
+                email = MIMEMultipart()
+                email['From'] = 'Faza3BD <contpython12354@gmail.com'
+                email['Subject'] = 'Creare cont'
+                email.attach(MIMEText(body))
+                email['To'] = emailadr
+                server = smtplib.SMTP(host='smtp.gmail.com', port=587)
+                server.starttls()
+                server.login('contpython12354@gmail.com', '#!Contpython123')
+                server.sendmail(email['From'], email['To'], email.as_string())
+                server.quit()
+            except:
+                pass
             return redirect('/home')
 
 
@@ -179,18 +182,20 @@ def submit_reset():
         cursorInst.execute(query)
         conn.commit()
         conn.close()
-
-        body = f"Noua parola este: {newPassword}"
-        email = MIMEMultipart()
-        email['From'] = 'Faza3BD <contpython12354@gmail.com'
-        email['Subject'] = 'Schimbare Parola'
-        email.attach(MIMEText(body))
-        email['To'] = emailaddr
-        server = smtplib.SMTP(host='smtp.gmail.com', port=587)
-        server.starttls()
-        server.login('contpython12354@gmail.com', '#!Contpython123')
-        server.sendmail(email['From'], email['To'], email.as_string())
-        server.quit()
+        try:
+            body = f"Noua parola este: {newPassword}"
+            email = MIMEMultipart()
+            email['From'] = 'Faza3BD <contpython12354@gmail.com'
+            email['Subject'] = 'Schimbare Parola'
+            email.attach(MIMEText(body))
+            email['To'] = emailaddr
+            server = smtplib.SMTP(host='smtp.gmail.com', port=587)
+            server.starttls()
+            server.login('contpython12354@gmail.com', '#!Contpython123')
+            server.sendmail(email['From'], email['To'], email.as_string())
+            server.quit()
+        except:
+            pass
         flash(f"Parola resetata. Verificati adresa de email. {newPassword}")
         return redirect('/home')
 
