@@ -7,6 +7,8 @@ import hashlib
 import datetime
 import smtplib
 import random
+from flask_httpauth import HTTPBasicAuth
+import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456789'
@@ -109,6 +111,7 @@ def register():
 @app.route("/submitregister", methods=['POST'])
 def submit_register():
     email = request.form['email']
+    emailadr = email
     birth_date = request.form['birth-date']
     account_date = str(datetime.date.today())
     password = request.form['password']
@@ -138,7 +141,18 @@ def submit_register():
             cursorInst.execute(query)
             conn.commit()
             conn.close()
-            flash("You can now log in")
+            flash("Cont inregistrat cu succes!")
+            body = f"Cont creat cu succes! Parola: {password}"
+            email = MIMEMultipart()
+            email['From'] = 'Faza3BD <contpython12354@gmail.com'
+            email['Subject'] = 'Creare cont'
+            email.attach(MIMEText(body))
+            email['To'] = emailadr
+            server = smtplib.SMTP(host='smtp.gmail.com', port=587)
+            server.starttls()
+            server.login('contpython12354@gmail.com', '#!Contpython123')
+            server.sendmail(email['From'], email['To'], email.as_string())
+            server.quit()
             return redirect('/home')
 
 
@@ -579,7 +593,7 @@ def homeAdmin():
 
 @app.route("/conturiAdmin")
 def conturiAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         offset = request.args.get("offset")
         if offset == None:
             offset = 0
@@ -652,7 +666,7 @@ def conturiAdmin():
 
 @app.route("/itemeAdmin")
 def itemeAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         offset = request.args.get("offset")
         if offset == None:
             offset = 0
@@ -725,7 +739,7 @@ def itemeAdmin():
 
 @app.route("/misiuniAdmin")
 def misiuniAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         offset = request.args.get("offset")
         if offset == None:
             offset = 0
@@ -799,7 +813,7 @@ def misiuniAdmin():
 
 @app.route("/caractereAdmin/<string:idcont>")
 def caractereAdmin(idcont):
-    if 'email' in session:
+    if session['xroot'] == True:
         session['temp_acc_id']=idcont
         con = sqlite3.connect("jocOnlineDB.db")
         con.row_factory = sqlite3.Row
@@ -845,7 +859,7 @@ def misiuniCaracterAdmin(id):
 ##TO DO ADAUGARE MISIUNE PE CARACTER
 @app.route('/addMissionOnChar')
 def addMissionOnChar():
-    if 'email' in session:
+    if session['xroot'] == True:
         offset = request.args.get("offset")
         limit = request.args.get("limit")
         if offset == None:
@@ -977,7 +991,7 @@ def addItemOnChar():
 
         iteme = query_db(database="jocOnlineDB.db", table_name="tblIteme", limit=limit, offset=offset, order_by='rowid', order='ASC' )
 
-        return render_template("f_ItemeAdminAddOn.html", iteme = iteme,
+        return render_template("f_itemeAdminAddOn.html", iteme = iteme,
         nextOffset = nextOffset, previousOffset = previousOffset, lastOffset = lastOffset)
     else:
         return redirect('/homeAdmin')
@@ -1107,7 +1121,7 @@ def modifyCaracterAdminAll(id):
 
 @app.route('/addMissionAdmin')
 def addMissionAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         return render_template('f_addMission.html')
     else:
         return redirect("/home")
@@ -1174,7 +1188,7 @@ def modifyMission(id):
 
 @app.route('/addItemAdmin')
 def addItemAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         return render_template('f_addItem.html')
     else:
         return redirect("/home")
@@ -1242,7 +1256,7 @@ def modifyItem(id):
 
 @app.route('/addAccountAdmin')
 def addAccountAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         return render_template('f_addAccountAdmin.html')
     else:
         return redirect("/home")
@@ -1335,7 +1349,7 @@ def modifyAccountAdmin(id):
 
 @app.route("/caractereAllAdmin")
 def caractereAllAdmin():
-    if 'email' in session:
+    if session['xroot'] == True:
         offset = request.args.get("offset")
         if offset == None:
             offset = 0
@@ -1401,9 +1415,6 @@ def caractereAllAdmin():
     else:
         return redirect('/home')
 
-
-### API ###
-from flask_httpauth import HTTPBasicAuth
 authBasic = HTTPBasicAuth()
 @authBasic.verify_password
 def verify_password(username,password):
@@ -1461,7 +1472,6 @@ def apiConturi():
         query =  "UPDATE tblConturi SET " + tmp + f" WHERE IDCont={id}"
         queryToDB(query)
         return "Done"
-
 
 if __name__ == '__main__':
     app.run(debug=True, host = "0.0.0.0", port=5000)

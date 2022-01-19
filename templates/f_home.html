@@ -61,23 +61,37 @@
     
             <div id="section2">
                 <h1 class="logo2">Baza de Date pentru un Joc Online</h1>
-                <p class="par">Bun venit pe website-ul JocOnline.</p>
-                <p class="par">Prin intermediul aceste aplicatii web puteti interoga baza de date JocOnline si se pot insera noi inregistrari</p>
+                <p class="par">Bun venit pe website-ul JocOnline.</p><br>
+                <p class="par">Prin intermediul acestei aplicatii web puteti interoga baza de date JocOnline si se pot realiza diferite operatii in functie de drepturile de acces.</p><br>
+                <p class="par">User: </p>
+                <ol>
+                    <li>Inregistrare</li>
+                    <li>Schimbarea datelor de logare</li>
+                    <li>Vizualizarea caracterelor de pe cont</li>
+                    <li>Crearea unui caracter</li>
+                    <li>Vizualizarea continutului tabelelor si filtrarea informatiei</li>
+                </ol>
+                <p class="par">Admin: </p>
+                <ol>
+                    <li>Administrare cont</li>
+                    <li>Adaugarea, stergerea, modificarea conturilor, caracterelor, itemelor si a misiunilor in baza de date</li>
+                    <li>Vizualizarea diferitelor informatii despre continutul unui cont</li>
+                </ol>
             </div>
     
             <div id="section3">
                 {% if 'email' not in session %}
                 <div class="form">
                     <form method="POST" action="/submitlogin">
-                        <h3>Login Here</h3>
-                        <input type="email" name="email" placeholder=" Enter Email Here">
-                        <input type="password" name="password" placeholder=" Enter Password Here">
-                        <button class="btn"><input2 type="submit" name="Login"><a>Submit</a></input></button>
-            
-                        <p class="link">Forgot password?</p><br>
-                        <a href="/resetpassword">Reset it</a>
-                        <p class="link">Don't have an account?</p><br>
-                        <a href="/register">Sign up here</a>
+                        <h3>Autentificare</h3>
+                        <input type="email" name="email" placeholder=" Introdu Email">
+                        <input type="password" name="password" placeholder=" Introdu Parola">
+                        <button class="btn"><input2 type="submit" name="Login"><a>Login</a></input></button><br><br>
+
+                        <p class="link">Parola uitata?</p>
+                        <a href="/resetpassword">Reseteaza Parola</a><br><br><br>
+                        <p class="link">Nu ai cont?</p>
+                        <a href="/register">Inregistrare</a><br>
                     </form>
                 </div>
                 {% else %}

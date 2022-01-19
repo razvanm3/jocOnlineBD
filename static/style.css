@@ -95,6 +95,17 @@ ul li a:hover{
     color: orange;
 }
 
+ol {
+  list-style-type: circle;
+
+}
+
+ol li{
+    text-decoration: none;
+    color: white;
+    font-family: Arial;
+    font-size: 15px;
+}
 
 /* CSS PENTRU TOP CARACTERE */
 
@@ -188,8 +199,8 @@ td a:hover{
 
 #section2 .par{
     color: white;
-    margin: 25px;
-    padding: 10px;
+    margin: 5px;
+    padding: 3x;
     font-family: Arial;
     /* line-height: 20px; */
 }
